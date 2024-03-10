@@ -2533,7 +2533,7 @@ $(recovery_ramdisk): $(recovery_uncompressed_ramdisk) $(COMPRESSION_COMMAND_DEPS
 # $(2): optional kernel file
 define build-recoveryimage-target
   @echo "Generating Changelog"
-  $(hide) ./vendor/nusantara/tools/changelog
+  $(hide) ./vendor/scandium/tools/changelog
   $(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(TARGET_PRODUCT)-Changelog.txt
   $(if $(filter true,$(PRODUCT_SUPPORTS_VBOOT)), \
     $(MKBOOTIMG) $(if $(strip $(2)),--kernel $(strip $(2))) $(INTERNAL_RECOVERYIMAGE_ARGS) \
