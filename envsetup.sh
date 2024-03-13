@@ -1807,9 +1807,9 @@ function _wrap_build()
 
     echo
     if [ $ret -eq 0 ] ; then
-        echo -n "${color_success}#### build completed successfully "
+        echo -n "${color_success}#### Build ScandiumOS Completed Successfully "
     else
-        echo -n "${color_failed}#### failed to build some targets "
+        echo -n "${color_failed}#### Failed To Build ScandiumOS Some Targets "
     fi
     if [ $hours -gt 0 ] ; then
         printf "(%02g:%02g:%02g (hh:mm:ss))" $hours $mins $secs
