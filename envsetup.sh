@@ -160,6 +160,7 @@ function check_product()
     fi
     export SCANDIUM_BUILD
 
+        SCANDIUM_VERSION=$(INTERNAL_BACON_TARGET) \
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
         TARGET_BUILD_TYPE= \
@@ -783,6 +784,7 @@ function lunch()
         cd - > /dev/null
     fi
 
+    SCANDIUM_VERSION=$(INTERNAL_BACON_TARGET) \
     TARGET_PRODUCT=$product \
     TARGET_BUILD_VARIANT=$variant \
     TARGET_PLATFORM_VERSION=$version \
