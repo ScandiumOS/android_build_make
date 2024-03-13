@@ -219,7 +219,28 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   # Dump fingerprints
   script.Print("Target: {}".format(target_info.fingerprint))
-
+  
+  android_version = target_info.GetBuildProp("ro.build.version.release")
+  build_id = target_info.GetBuildProp("ro.build.id")
+  build_date = target_info.GetBuildProp("ro.build.date")
+  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
+  device = target_info.GetBuildProp("ro.product.device")
+  
+  def PrintScandiumUIBanner(android_version, build_id, build_date, security_patch, device):
+    self.Print("----------------------------------------------------")
+    self.Print("    ___                  _ _           _   _ ___    ")
+    self.Print("   / __| __ __ _ _ _  __| (_)_  _ _ __| | | |_ _|   ")
+    self.Print("   \__ \/ _/ _` | ' \/ _` | | || | '  \ |_| || |    ")
+    self.Print("   |___/\__\__,_|_||_\__,_|_|\_,_|_|_|_\___/|___|   ")
+    self.Print("                                                    ")
+    self.Print("----------------------------------------------------")
+    self.Print(" Android version: %s"%(android_version))
+    self.Print(" Build id: %s"%(build_id))
+    self.Print(" Build date: %s"%(build_date))
+    self.Print(" Security patch: %s"%(security_patch))
+    self.Print(" Device: %s"%(device))
+    self.Print("----------------------------------------------------")
+  
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
