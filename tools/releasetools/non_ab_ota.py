@@ -217,32 +217,32 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     # Stage 3/3: Make changes.
     script.Comment("Stage 3/3")
 
-  # Dump fingerprints
-  script.Print("Target: {}".format(target_info.fingerprint))
-  
-  android_version = target_info.GetBuildProp("ro.build.version.release")
-  build_id = target_info.GetBuildProp("ro.build.id")
-  build_date = target_info.GetBuildProp("ro.build.date")
-  security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
-  device = target_info.GetBuildProp("ro.product.device")
-  script.PrintScandiumUIBanner(android_version, build_id, build_date, security_patch, device)
-  
-  def PrintScandiumUIBanner(android_version, build_id, build_date, security_patch, device):
-    self.Print("####################################################")
-    self.Print("    ___                  _ _           _   _ ___    ")
-    self.Print("   / __| __ __ _ _ _  __| (_)_  _ _ __| | | |_ _|   ")
-    self.Print("   \__ \/ _/ _` | ' \/ _` | | || | '  \ |_| || |    ")
-    self.Print("   |___/\__\__,_|_||_\__,_|_|\_,_|_|_|_\___/|___|   ")
-    self.Print("                                                    ")
-    self.Print("####################################################")
-    self.Print(" Android version: %s"%(android_version))
-    self.Print(" Build id: %s"%(build_id))
-    self.Print(" Build date: %s"%(build_date))
-    self.Print(" Security patch: %s"%(security_patch))
-    self.Print(" Device: %s"%(device))
-    self.Print("####################################################")
-  
-  device_specific.FullOTA_InstallBegin()
+# Dump fingerprints
+print("Target: {}".format(target_info.fingerprint))
+
+android_version = target_info.GetBuildProp("ro.build.version.release")
+build_id = target_info.GetBuildProp("ro.build.id")
+build_date = target_info.GetBuildProp("ro.build.date")
+security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
+device = target_info.GetBuildProp("ro.product.device")
+print_scandium_ui_banner(android_version, build_id, build_date, security_patch, device)
+
+def print_scandium_ui_banner(android_version, build_id, build_date, security_patch, device):
+    print("####################################################")
+    print("    ___                  _ _           _   _ ___    ")
+    print("   / |   _ _ _  | (_)_  _ _ | | | |_ _|   ")
+    print("   \ \/ _/ _ | ' \/ _ | |  | '  \ |_|  |    ")
+    print("   |___/\__\__,_|_||_\__,_|_|\_,_|_|_|_\___/|___|   ")
+    print("                                                    ")
+    print("####################################################")
+    print(" Android version: %s" % (android_version))
+    print(" Build id: %s" % (build_id))
+    print(" Build date: %s" % (build_date))
+    print(" Security patch: %s" % (security_patch))
+    print(" Device: %s" % (device))
+    print("####################################################")
+
+device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
   script.UnpackPackageDir("install", "/tmp/install")
