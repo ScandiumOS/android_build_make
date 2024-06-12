@@ -217,32 +217,10 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     # Stage 3/3: Make changes.
     script.Comment("Stage 3/3")
 
-# Dump fingerprints
-print("Target: {}".format(target_info.fingerprint))
+  # Dump fingerprints
+  script.Print("Target: {}".format(target_info.fingerprint))
 
-android_version = target_info.GetBuildProp("ro.build.version.release")
-build_id = target_info.GetBuildProp("ro.build.id")
-build_date = target_info.GetBuildProp("ro.build.date")
-security_patch = target_info.GetBuildProp("ro.build.version.security_patch")
-device = target_info.GetBuildProp("ro.product.device")
-print_scandium_ui_banner(android_version, build_id, build_date, security_patch, device)
-
-def print_scandium_ui_banner(android_version, build_id, build_date, security_patch, device):
-    print("----------------------------------------------------")
-    print("    ___                  _ _           _   _ ___    ")
-    print("   / __| __ __ _ _ _  __| (_)_  _ _ __| | | |_ _|   ")
-    print("   \__ \/ _/ _` | ' \/ _` | | || | '  \ |_| || |    ")
-    print("   |___/\__\__,_|_||_\__,_|_|\_,_|_|_|_\___/|___|   ")
-    print("                                                    ")
-    print("----------------------------------------------------")
-    print(" Android version: %s" % (android_version))
-    print(" Build id: %s" % (build_id))
-    print(" Build date: %s" % (build_date))
-    print(" Security patch: %s" % (security_patch))
-    print(" Device: %s" % (device))
-    print("----------------------------------------------------")
-
-device_specific.FullOTA_InstallBegin()
+  device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
   script.UnpackPackageDir("install", "/tmp/install")
