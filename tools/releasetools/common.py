@@ -3227,10 +3227,10 @@ class BlockDifference(object):
     if not self.src:
       # write the output unconditionally
       script.Print(" ")
-      script.Print("Flashing NusantaraProject %s files..." % (self.partition,))
+      script.Print("Flashing ScandiumOS %s files..." % (self.partition,))
     else:
       script.Print(" ")
-      script.Print("Flashing NusantaraProject %s files after verification." % (self.partition,))
+      script.Print("Flashing ScandiumOS %s files after verification." % (self.partition,))
 
     if progress:
       script.ShowProgress(progress, 0)
@@ -3331,7 +3331,7 @@ class BlockDifference(object):
   def WritePostInstallVerifyScript(self, script):
     partition = self.partition
     script.Print(" ")
-    script.Print('Verifying NusantaraProject %s files...' % (partition,))
+    script.Print('Verifying ScandiumOS %s files...' % (partition,))
     # Unlike pre-install verification, clobbered_blocks should not be ignored.
     ranges = self.tgt.care_map
     ranges_str = ranges.to_string_raw()
@@ -3349,7 +3349,7 @@ class BlockDifference(object):
               self.device, ranges_str,
               self._HashZeroBlocks(self.tgt.extended.size())))
       script.Print(" ")
-      script.Print('Verified NusantaraProject %s files.' % (partition,))
+      script.Print('Verified ScandiumOS %s files.' % (partition,))
       if partition == "system":
         code = ErrorCode.SYSTEM_NONZERO_CONTENTS
       else:
@@ -3361,7 +3361,7 @@ class BlockDifference(object):
           'endif;' % (code, partition))
     else:
       script.Print(" ")
-      script.Print('Verified NusantaraProject %s files.' % (partition,))
+      script.Print('Verified ScandiumOS %s files.' % (partition,))
 
     if partition == "system":
       code = ErrorCode.SYSTEM_UNEXPECTED_CONTENTS
