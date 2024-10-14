@@ -803,6 +803,8 @@ function lunch()
         echo
         return 1
     fi
+    export SCANDIUM_VERSION=$(get_build_var SCANDIUM_VERSION)
+    export SCANDIUM_BUILD_TYPE=$(get_build_var SCANDIUM_BUILD_TYPE)
     export TARGET_PRODUCT=$(get_build_var TARGET_PRODUCT)
     export TARGET_BUILD_VARIANT=$(get_build_var TARGET_BUILD_VARIANT)
     if [ -n "$version" ]; then
